@@ -3,11 +3,12 @@ import Users from "../models/userModel";
 import argon2 from "argon2";
 import jwt from "jsonwebtoken";
 import { MyRequest } from "utils/types";
+import { sanitize } from "utils/utils";
 
 const userController = {
     register: async (req: Request, res: Response) => {
         try {
-            const { name, email, password } = req.body;
+            const { name, email, password } = sanitize(req.body);
 
             const user = await Users.findOne({ email });
             if (user)
@@ -45,7 +46,7 @@ const userController = {
     },
     login: async (req: Request, res: Response) => {
         try {
-            const { email, password } = req.body;
+            const { email, password } = sanitize(req.body);
 
             const user: any = await Users.findOne({ email });
             if (!user)
