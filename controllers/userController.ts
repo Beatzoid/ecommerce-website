@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Users from "../models/userModel";
 import argon2 from "argon2";
 import jwt from "jsonwebtoken";
+import { MyRequest } from "utils/types";
 
 const userController = {
     register: async (req: Request, res: Response) => {
@@ -72,7 +73,7 @@ const userController = {
             return res.status(500).json({ error: err.message });
         }
     },
-    logout: async (req: Request, res: Response) => {
+    logout: async (_: Request, res: Response) => {
         try {
             res.clearCookie("refreshtoken", { path: "/users/refresh_token" });
             return res.json({ msg: "Logout successful" });
@@ -102,6 +103,19 @@ const userController = {
                     return res.json({ accesstoken });
                 }
             );
+        } catch (err) {
+            return res.status(500).json({ error: err.message });
+        }
+    },
+    getUser: async (req: Request, res: Response) => {
+        try {
+            const user = await Users.findById(
+                (req as MyRequest).user.id
+            ).select("-password");
+            if (!user)
+                return res.status(400).json({ error: "User does not exist" });
+
+            return res.json(user);
         } catch (err) {
             return res.status(500).json({ error: err.message });
         }
