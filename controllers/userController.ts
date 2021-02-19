@@ -42,6 +42,44 @@ const userController = {
             return res.status(500).json({ error: err.message });
         }
     },
+    login: async (req: Request, res: Response) => {
+        try {
+            const { email, password } = req.body;
+
+            const user: any = await Users.findOne({ email });
+            if (!user)
+                return res
+                    .status(400)
+                    .json({ error: "Incorrect login details" });
+
+            const isMatch = await argon2.verify(user.password, password);
+            if (!isMatch)
+                return res
+                    .status(400)
+                    .json({ error: "Incorrect login details" });
+
+            // If the login was successful, create the access and refresh token
+            const accesstoken = createAccessToken({ id: user._id });
+            const refreshtoken = createRefreshToken({ id: user._id });
+
+            res.cookie("refreshtoken", refreshtoken, {
+                httpOnly: true,
+                path: "/users/refresh_token"
+            });
+
+            return res.json({ accesstoken });
+        } catch (err) {
+            return res.status(500).json({ error: err.message });
+        }
+    },
+    logout: async (req: Request, res: Response) => {
+        try {
+            res.clearCookie("refreshtoken", { path: "/users/refresh_token" });
+            return res.json({ msg: "Logout successful" });
+        } catch (err) {
+            return res.status(500).json({ error: err.message });
+        }
+    },
     // @ts-ignore
     refreshToken: async (req: Request, res: Response) => {
         try {
