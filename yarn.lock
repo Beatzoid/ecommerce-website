@@ -16,6 +16,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@phc/format@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@phc/format@npm:1.0.0"
+  checksum: 4ad791bb211e336de79bb5c1dac3d9d073ff8d0e4dc009a8b8a10d92ed628b22c35cd71e38f1fd54abc1749fad894ab1f2d76e354d6066f165465001d6640459
+  languageName: node
+  linkType: hard
+
 "@sindresorhus/is@npm:^0.14.0":
   version: 0.14.0
   resolution: "@sindresorhus/is@npm:0.14.0"
@@ -105,6 +112,15 @@ __metadata:
     "@types/qs": "*"
     "@types/serve-static": "*"
   checksum: 2818120a0fd8b7982215864929cdc6cd14942dd44849f93054fe2a90b4233dff67aadc34c73b5937922a02c688b0263d00a4807aa2e59307ac859a1458d73669
+  languageName: node
+  linkType: hard
+
+"@types/jsonwebtoken@npm:^8.5.0":
+  version: 8.5.0
+  resolution: "@types/jsonwebtoken@npm:8.5.0"
+  dependencies:
+    "@types/node": "*"
+  checksum: d1a6b28f826898bc4f5596d91705aa864419c4a5ca49215507260644af8ceff9edb6db1901a108207cfb22558d035655b55309f38b75fa081da01be9f5408b21
   languageName: node
   linkType: hard
 
@@ -285,6 +301,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"argon2@npm:^0.27.1":
+  version: 0.27.1
+  resolution: "argon2@npm:0.27.1"
+  dependencies:
+    "@phc/format": ^1.0.0
+    node-addon-api: ^3.0.2
+    node-pre-gyp: ^0.17.0
+    opencollective-postinstall: ^2.0.3
+  checksum: 8740c49ffde1e7254e342e422dacf2e0365c9ac8d91464f5144aa266081097404acb354b1ce50010a049346f120abb15f76ff018b8d3d02787356eb527f3c2ca
+  languageName: node
+  linkType: hard
+
 "array-flatten@npm:1.1.1":
   version: 1.1.1
   resolution: "array-flatten@npm:1.1.1"
@@ -349,16 +377,6 @@ __metadata:
   dependencies:
     tweetnacl: ^0.14.3
   checksum: 3f57eb99bbc02352f68ff31e446997f4d21cc9a5e5286449dc1fe0116ec5dac5a4aa538967d45714fa9320312d2be8d16126f2d357da1dd40a3d546b96e097ed
-  languageName: node
-  linkType: hard
-
-"bcrypt@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "bcrypt@npm:5.0.0"
-  dependencies:
-    node-addon-api: ^3.0.0
-    node-pre-gyp: 0.15.0
-  checksum: 73241a03a0b62e50138342801a4123ac6026330fc417ae586ab2fae95e62a3acdf4a6d27afa6f8b4eb9186f7d9b889113efd385e5c99c2943250b3fafd1549d7
   languageName: node
   linkType: hard
 
@@ -918,7 +936,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"detect-libc@npm:^1.0.2":
+"detect-libc@npm:^1.0.3":
   version: 1.0.3
   resolution: "detect-libc@npm:1.0.3"
   bin:
@@ -986,7 +1004,8 @@ __metadata:
     "@types/cors": ^2.8.10
     "@types/express": ^4.17.11
     "@types/express-fileupload": ^1.1.6
-    bcrypt: ^5.0.0
+    "@types/jsonwebtoken": ^8.5.0
+    argon2: ^0.27.1
     cloudinary: ^1.24.0
     concurrently: ^5.3.0
     cookie-parser: ^1.4.5
@@ -994,7 +1013,7 @@ __metadata:
     dotenv: ^8.2.0
     express: ^4.17.1
     express-fileupload: ^1.2.1
-    jsonwebtoken: ^8.5.1
+    jsonwebtoken: "https://github.com/auth0/node-jsonwebtoken"
     mongoose: 5.11.17
     nodemon: ^2.0.7
     typescript: ^4.1.5
@@ -1809,9 +1828,9 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"jsonwebtoken@npm:^8.5.1":
+"jsonwebtoken@https://github.com/auth0/node-jsonwebtoken":
   version: 8.5.1
-  resolution: "jsonwebtoken@npm:8.5.1"
+  resolution: "jsonwebtoken@https://github.com/auth0/node-jsonwebtoken.git#commit=d71e383862fc735991fd2e759181480f066bf138"
   dependencies:
     jws: ^3.2.2
     lodash.includes: ^4.3.0
@@ -1823,7 +1842,7 @@ fsevents@~2.3.1:
     lodash.once: ^4.0.0
     ms: ^2.1.1
     semver: ^5.6.0
-  checksum: ea44bbb7a7abab87eee57711a04093a2a04a5757faa3253f521327b840e07eff751986ed6c20985886c5aaa86245a833aa1eeda6eacb0c3fa9ea4e7074cdb0c3
+  checksum: 05525075c825635957eb8b3012343d7d0c81b1e4e9a2f6e83e4d7221bfd591c64eab2a143a01611e78eec64c6069bec094905cb0c6b34dbc8a59f76dccd8be11
   languageName: node
   linkType: hard
 
@@ -2117,7 +2136,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"mkdirp@npm:^0.5.0, mkdirp@npm:^0.5.3":
+"mkdirp@npm:^0.5.0, mkdirp@npm:^0.5.5":
   version: 0.5.5
   resolution: "mkdirp@npm:0.5.5"
   dependencies:
@@ -2244,7 +2263,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"needle@npm:^2.5.0":
+"needle@npm:^2.5.2":
   version: 2.6.0
   resolution: "needle@npm:2.6.0"
   dependencies:
@@ -2264,7 +2283,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"node-addon-api@npm:^3.0.0":
+"node-addon-api@npm:^3.0.2":
   version: 3.1.0
   resolution: "node-addon-api@npm:3.1.0"
   dependencies:
@@ -2293,23 +2312,23 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"node-pre-gyp@npm:0.15.0":
-  version: 0.15.0
-  resolution: "node-pre-gyp@npm:0.15.0"
+"node-pre-gyp@npm:^0.17.0":
+  version: 0.17.0
+  resolution: "node-pre-gyp@npm:0.17.0"
   dependencies:
-    detect-libc: ^1.0.2
-    mkdirp: ^0.5.3
-    needle: ^2.5.0
-    nopt: ^4.0.1
-    npm-packlist: ^1.1.6
-    npmlog: ^4.0.2
-    rc: ^1.2.7
-    rimraf: ^2.6.1
-    semver: ^5.3.0
-    tar: ^4.4.2
+    detect-libc: ^1.0.3
+    mkdirp: ^0.5.5
+    needle: ^2.5.2
+    nopt: ^4.0.3
+    npm-packlist: ^1.4.8
+    npmlog: ^4.1.2
+    rc: ^1.2.8
+    rimraf: ^2.7.1
+    semver: ^5.7.1
+    tar: ^4.4.13
   bin:
-    node-pre-gyp: ./bin/node-pre-gyp
-  checksum: 6a0e20bda32519e8574ec0c594cc4ec2085976b05f810cf811893ffb24884ec57eb6f8d114f4c21b995e48e0e46aead7616502d4750a407266e84be9a89a8ae6
+    node-pre-gyp: bin/node-pre-gyp
+  checksum: 9bed997d98ae6f58a1665060e1f9e61806ca48f4cb8fcefe7f8cfe4ddca0abdcfb3fc627c2d3f39522748bd3b8cfce250c4bfa1147aee668317e027982d4bb3b
   languageName: node
   linkType: hard
 
@@ -2333,7 +2352,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"nopt@npm:^4.0.1":
+"nopt@npm:^4.0.3":
   version: 4.0.3
   resolution: "nopt@npm:4.0.3"
   dependencies:
@@ -2409,7 +2428,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"npm-packlist@npm:^1.1.6":
+"npm-packlist@npm:^1.4.8":
   version: 1.4.8
   resolution: "npm-packlist@npm:1.4.8"
   dependencies:
@@ -2420,7 +2439,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"npmlog@npm:^4.0.2, npmlog@npm:^4.1.2":
+"npmlog@npm:^4.1.2":
   version: 4.1.2
   resolution: "npmlog@npm:4.1.2"
   dependencies:
@@ -2477,6 +2496,15 @@ fsevents@~2.3.1:
   dependencies:
     fn.name: 1.x.x
   checksum: f1efa31ce3e3ec54cd0d05dff9690bff1f14e96ee8fee27b52bfac372c659f07ab5df0c068d8aab06ca2c86c4bca810a98c65920c35f2c32c2ddb8226d0b307c
+  languageName: node
+  linkType: hard
+
+"opencollective-postinstall@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "opencollective-postinstall@npm:2.0.3"
+  bin:
+    opencollective-postinstall: index.js
+  checksum: d75b06b80eb426aaf099307ca4398f3119c8c86ff3806a95cfe234b979b80c07080040734fe2dc3c51fed5b15bd98dae88340807980bdc74aa1ebf045c74ef06
   languageName: node
   linkType: hard
 
@@ -2718,7 +2746,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"rc@npm:^1.2.7, rc@npm:^1.2.8":
+"rc@npm:^1.2.8":
   version: 1.2.8
   resolution: "rc@npm:1.2.8"
   dependencies:
@@ -2891,7 +2919,7 @@ resolve@^1.10.0:
   languageName: node
   linkType: hard
 
-"rimraf@npm:^2.6.1":
+"rimraf@npm:^2.7.1":
   version: 2.7.1
   resolution: "rimraf@npm:2.7.1"
   dependencies:
@@ -2968,7 +2996,7 @@ resolve@^1.10.0:
   languageName: node
   linkType: hard
 
-"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.1.0, semver@npm:^5.3.0, semver@npm:^5.6.0, semver@npm:^5.7.1":
+"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.1.0, semver@npm:^5.6.0, semver@npm:^5.7.1":
   version: 5.7.1
   resolution: "semver@npm:5.7.1"
   bin:
@@ -3297,7 +3325,7 @@ resolve@^1.10.0:
   languageName: node
   linkType: hard
 
-"tar@npm:^4.4.2":
+"tar@npm:^4.4.13":
   version: 4.4.13
   resolution: "tar@npm:4.4.13"
   dependencies:

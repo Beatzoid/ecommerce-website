@@ -13,7 +13,8 @@
     "author": "Beatzoid",
     "license": "MIT",
     "dependencies": {
-        "bcrypt": "^5.0.0",
+        "@types/jsonwebtoken": "^8.5.0",
+        "argon2": "^0.27.1",
         "cloudinary": "^1.24.0",
         "concurrently": "^5.3.0",
         "cookie-parser": "^1.4.5",
@@ -21,7 +22,7 @@
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
         "express-fileupload": "^1.2.1",
-        "jsonwebtoken": "^8.5.1",
+        "jsonwebtoken": "https://github.com/auth0/node-jsonwebtoken",
         "mongoose": "5.11.17",
         "typescript": "^4.1.5",
         "winston": "^3.3.3"
