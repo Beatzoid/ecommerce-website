@@ -5,10 +5,11 @@ import cors from "cors";
 import fileUpload from "express-fileupload";
 import cookieParser from "cookie-parser";
 import logger from "./utils/logger";
-import categoryRouter from "./routes/categoryRouter";
 
 // Routes
 import userRoutes from "./routes/userRouter";
+import categoryRouter from "./routes/categoryRouter";
+import uploadRouter from "./routes/uploadRouter";
 
 const app = express();
 app.use(express.json());
@@ -21,6 +22,7 @@ app.use(fileUpload({ useTempFiles: true }));
 // Routes
 app.use("/users", userRoutes);
 app.use("/api", categoryRouter);
+app.use("/api", uploadRouter);
 
 const URI = process.env.MONGODB_URI as string;
 mongoose
