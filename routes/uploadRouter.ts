@@ -57,14 +57,11 @@ router.post("/destroy", auth, adminAuth, (req, res) => {
                 error: "You must provide an id for the image to delete"
             });
 
-        cloudinary.v2.uploader.destroy(
-            public_id,
-            async (err: any, result: any) => {
-                if (err) throw err;
+        cloudinary.v2.uploader.destroy(public_id, async (err: any) => {
+            if (err) throw err;
 
-                res.json({ msg: "Successfully deleted Image" });
-            }
-        );
+            res.json({ msg: "Successfully deleted Image" });
+        });
 
         // Typescript
         return;
