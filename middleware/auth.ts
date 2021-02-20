@@ -7,7 +7,7 @@ const auth = (req: Request, res: Response, next: NextFunction) => {
     try {
         const token = req.header("Authorization");
         if (!token)
-            return res.status(500).json({ error: "Invalid Authentication" });
+            return res.status(401).json({ error: "Invalid Authentication" });
 
         jwt.verify(
             token,
@@ -15,7 +15,7 @@ const auth = (req: Request, res: Response, next: NextFunction) => {
             (err: any, user: any) => {
                 if (err)
                     return res
-                        .status(500)
+                        .status(401)
                         .json({ error: "Invalid Authentication" });
 
                 (req as MyRequest).user = user;

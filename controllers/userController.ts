@@ -2,8 +2,8 @@ import { Request, Response } from "express";
 import Users from "../models/userModel";
 import argon2 from "argon2";
 import jwt from "jsonwebtoken";
-import { MyRequest } from "utils/types";
-import { sanitize } from "utils/utils";
+import { MyRequest } from "../utils/types";
+import { sanitize } from "../utils/utils";
 
 const userController = {
     register: async (req: Request, res: Response) => {
